@@ -35,13 +35,23 @@
          }
     };
     const init = () => {
+        showDate();
+        setListeners();
+        loadExistingTodos();
+
+    };
+    const loadExistingTodos = () => {
         const savedTodos = localDB.getItem('todos');
         if (savedTodos) {
             todos = savedTodos;
         }
-        showDate();
-        setListeners();
+        if(todos && Array.isArray(todos)){
+            todos.forEach(todo => showTodo(todo));
+        }
     };
+
+
+
     const showDate = () => {
         const currentDate = new Date();
         const day = [
@@ -82,6 +92,15 @@
     const showTodo = todo => {
         const todoItem = document.createElement('div');
         todoListPending.appendChild(todoItem);
+
+        todoItem.innerHTML = `
+            <input type="checkbox"
+            <span>${todo.text}</span>
+            <button>
+            <i class="fa fa-trash></i>
+            </button>    
+        
+        `;
     };
 
 

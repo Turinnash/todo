@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h3 class="body__day">Monday</h3>
     
+        <h3 class="body__date">2020-12-11</h3>
+    
+        <div class="body__todo-instert">
+            <input type="text">
+            <button>
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+        <p>You have <span class="todo_number">0</span>pending items.</p>
+        
+        <div class="todo__list--pending">
+    
+        </div>
+        
+        <div class="todo__list--finished">
+    
+        </div>
+    
+        <div class="todo__footer">
+            <button class="footer__btn--complete">Show Complete</button>
+            <button class="footer__btn--clear">Clear All</button>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
 </body>
 </html>

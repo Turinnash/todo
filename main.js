@@ -1,8 +1,13 @@
 (function(){
 
-
+    let todo = []; 
+        
     const bodyDay = document.querySelector('.body__day');
     const bodyDate = document.querySelector('.body__date');
+    const todoPlusBtn = document.querySelector('.todo__plus');
+    const todoInput = document.querySelector('.todo__input');
+    const todoListPending = document.querySelector('.todo__list-pending');
+
     const dayNames = [
                'Sunday',
                'Monday',
@@ -10,7 +15,7 @@
                'Wednesday', 
                'Thursday', 
                'Friday', 
-               'Saturday'
+               'Saturday',
             ];
 
     const localDB = {
@@ -35,16 +40,48 @@
             todos = savedTodos;
         }
         showDate();
+        setListeners();
     };
     const showDate = () => {
         const currentDate = new Date();
         const day = [
             currentDate.getFullYear(), 
-            currentDate.getMonth()+1,
+            currentDate.getDate(),
             currentDate.getDate()
         ].map(num => num <10 ? `0${num}` : num);
-        bodyDay.textContent = dayNames[currentDate.getDay()];
 
+        bodyDay.textContent = dayNames[currentDate.getDay()];
+        bodyDate.textContent = day.join('-');
+    };
+
+    const setListeners = () => {
+        todoPlusBtn.addEventListener('click', addNewTodo);
+    };
+    const addNewTodo = () => {
+        const value = todoInput.value;
+        if( value === ''){
+            alert('Please type a todo!');
+            return;
+        }
+
+        const todo = {
+            text : value,
+            done : false
+        };
+
+        todos.push(todo);
+
+        localDB.setItem('todos', todos);
+
+        showTodo(todo);
+
+        todoInput.value = '';
+
+    };
+    
+    const showTodo = todo => {
+        const todoItem = document.createElement('div');
+        todoListPending.appendChild(todoItem);
     };
 
 

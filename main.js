@@ -6,7 +6,7 @@
     const bodyDate = document.querySelector('.body__date');
     const todoPlusBtn = document.querySelector('.todo__plus');
     const todoInput = document.querySelector('.todo__input');
-    const todoListPending = document.querySelector('.todo__list-pending');
+    const todoListPending = document.querySelector('.todo__list--pending');
 
     const dayNames = [
                'Sunday',
@@ -96,7 +96,7 @@
         todoItem.innerHTML = `
             <input type="checkbox"
             <span>${todo.text}</span>
-            <button>
+            <button class="todo__trash--btn">
             <i class="fa fa-trash></i>
             </button>    
         
